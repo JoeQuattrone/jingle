@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Jingle</title>
+  </head>
+  <body>
+
+    <% if Helpers.is_logged_in?(session) %>
+      <a href="/logout">Logout</a>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

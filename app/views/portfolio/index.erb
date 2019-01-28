@@ -1,0 +1,7 @@
+<h1>Your Portfolio</h1>
+<h3>See what other's are saving for!</h3>
+<% @portfolios.each do |portfolio| %>
+<ul>
+  <li> <%= binding.pry %> says <%= portfolio.goal %></li>
+</ul>
+<% end %>
