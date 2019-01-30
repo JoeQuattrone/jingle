@@ -2,7 +2,7 @@ class PortfoliosController < ApplicationController
 
   get '/portfolios' do
     if Helpers.is_logged_in?(session)
-      @portfolios = Portfolio.shareable_portfolios
+      @portfolios = Portfolio.shareable_portfolios.last(5)
       @all_users = User.all
       @user = User.find(session[:id])
       erb :"portfolio/index"
@@ -20,8 +20,16 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  get "/portfolios/allgoals" do
+    if Helpers.is_logged_in?(session)
+      @portfolios = Portfolio.shareable_portfolios
+      @all_users = User.all
+      erb :"portfolio/allgoals"
+    end
+  end
+
   post '/portfolios' do
-    if params.any? { |param| param.nil? || param == '' }
+    if params.any? { |key, param| param.nil? || param == '' }
       redirect to '/portfolios/new'
     else
       @user = Helpers.current_user(session)
@@ -69,5 +77,7 @@ class PortfoliosController < ApplicationController
       end
       redirect to "/portfolios"
     end
+
+    get "/portfolios/:id/predictions"
 
 end

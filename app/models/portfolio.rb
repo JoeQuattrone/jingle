@@ -25,16 +25,24 @@ class Portfolio < ActiveRecord::Base
   end
 
   def years_until_goal_achieved
-    answer = self.ideal_completion_amount/(self.monthly_addition_to_portfolio * 12)**1+(self.estimated_growth_rate/100)
+    answer = (self.ideal_completion_amount - self.current_savings)/(self.monthly_addition_to_portfolio * 12)**1+(self.estimated_growth_rate/100)
     answer.round(2)
   end
 
   def amount_by_goal_age
-    one = self.current_savings + self.monthly_addition_to_portfolio * 12.0
+    one = self.current_savings + (self.monthly_addition_to_portfolio * 12.0)
 
-    two = one**(1 + self.estimated_growth_rate / 100.0)
+    two = (1 + self.estimated_growth_rate/100.0)** self.years_until_goal
 
-    answer= two * self.years_until_goal_achieved
+    answer = one * two
+    answer.round(2)
+  end
+
+  def projected_amount_by_goal_end(years_until_amount, amount)
+    one = amount_by_goal_age/ (1 + self.estimated_growth_rate/100)**(self.years_until_goal - self.years_until_amount)
+
+    answer = one + (amount)*(1 + self.estimated_growth_rate/100)**(self.years_until_goal - self.years_until_amount)
+
     answer.round(2)
   end
 

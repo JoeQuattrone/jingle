@@ -5,6 +5,7 @@
   <li> <%= @all_users.find(portfolio.user_id).first_name%> wants to: <%= portfolio.goal.downcase %></li>
 </ul>
 <% end %>
+<p><a href="/portfolios/allgoals">View more</a></p>
 
 <h3>Your Portfolios</h3>
 <% @user.portfolios.each do |portfolio|%>
