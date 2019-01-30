@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190128141416) do
+ActiveRecord::Schema.define(version: 20190128200920) do
 
   create_table "portfolios", force: :cascade do |t|
     t.integer "user_id"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20190128141416) do
     t.string  "portfolio_description"
     t.string  "goal"
     t.integer "current_age"
-    t.integer "ideal_retirement_age"
-    t.decimal "ideal_retirement_amount"
+    t.integer "ideal_completion_age"
+    t.decimal "ideal_completion_amount"
     t.decimal "gross_monthly_income"
     t.decimal "gross_monthly_exp"
     t.decimal "monthly_addition_to_portfolio"

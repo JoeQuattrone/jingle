@@ -1,0 +1,25 @@
+<h1><%= @portfolio.portfolio_name %></h1>
+
+<ul>
+  <li>Your retirement goal is $<%= @portfolio.to_comma(@portfolio.ideal_completion_amount) %>.</li>
+
+  <li>Your current savings is $<%= @portfolio.to_comma(@portfolio.current_savings) %>.</li>
+
+  <li>You want to reach your goal in <%= @portfolio.years_until_goal %> years.</li>
+
+  <li>Your net monthly income is $<%= @portfolio.to_comma(@portfolio.net_monthly_income) %>.</li>
+
+  <li>You save $<%= @portfolio.to_comma(@portfolio.monthly_addition_to_portfolio) %> per month for your goal at a <%= @portfolio.estimated_growth_rate.round%>&#37; yearly interest rate.</li>
+
+  <li>Your contribution rate towards your portfolio is <%= @portfolio.allocation_towards_portfolio %>&#37;.</li>
+
+  <li>At the current contribution rate, you'll reach your goal in <%=    @portfolio.years_until_goal_achieved %> years.</li>
+
+  <li>At the current contribution rate, you'll have $<%= @portfolio.to_comma(@portfolio.amount_by_goal_age) %> amount by the end of your goal.</li>
+</ul>
+
+<a href="/portfolios/<%= @portfolio.id %>/edit">Edit Portfolio</a>
+<form action="/portfolios/<%= @portfolio.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Portfolio" id="delete_portfolio">
+</form>

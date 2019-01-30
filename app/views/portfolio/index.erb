@@ -1,7 +1,15 @@
-<h1>Your Portfolio</h1>
+<h1>Welcome, <%= @user.first_name %> </h1>
 <h3>See what other's are saving for!</h3>
 <% @portfolios.each do |portfolio| %>
 <ul>
-  <li> <%= binding.pry %> says <%= portfolio.goal %></li>
+  <li> <%= @all_users.find(portfolio.user_id).first_name%> wants to: <%= portfolio.goal.downcase %></li>
 </ul>
 <% end %>
+
+<h3>Your Portfolios</h3>
+<% @user.portfolios.each do |portfolio|%>
+<a href="/portfolios/<%= portfolio.id %>"> <%= portfolio.portfolio_name %> </a>
+<% end %>
+
+
+<p><a href="/portfolios/new">Create a new portfolio</a></p>
