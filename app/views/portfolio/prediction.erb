@@ -1,0 +1,8 @@
+<h1>Predictions</h1>
+<h4>Estimate your contributions</h4>
+<form action="/portfolios/<%= @portfolio.id %>/predictions" method="post">
+  <p>
+    In <input type="number" name="years_until_amount" min="0" max="100" step="1"> year(s), I'll be able to contribute &#36;<input type="number" name="prediction_amount" min="0" max="any" step=".01" placeholder="3,000"> per month
+  </p>
+  <input type="submit" value="Submit">
+</form>

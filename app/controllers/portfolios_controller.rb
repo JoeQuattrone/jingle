@@ -78,6 +78,26 @@ class PortfoliosController < ApplicationController
       redirect to "/portfolios"
     end
 
-    get "/portfolios/:id/predictions"
+    get "/portfolios/:id/predictions" do
+      @portfolio = Portfolio.find(params[:id])
+      if Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @portfolio.user_id
+        erb :"portfolio/prediction"
+      end
+    end
+
+    post "/portfolios/:id/predictions" do
+      @portfolio = Portfolio.find(params[:id])
+      @portfolio.projected_contribution = params[:prediction_amount].to_i
+      @portfolio.projected_time = params[:years_until_amount].to_i
+      @portfolio.projected_amount = @portfolio.projected_amount_by_goal_end(@portfolio.projected_time, @portfolio.projected_contribution)
+        erb :"portfolio/prediction_results"
+    end
+
+    get "/portfolios/:id/predictionresults" do
+      @portfolio = Portfolio.find(params[:id])
+      erb :"portfolio/prediction_results"
+    end
+
+
 
 end
