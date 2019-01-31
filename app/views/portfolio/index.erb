@@ -1,16 +1,29 @@
-<h1>Welcome, <%= @user.first_name %> </h1>
-<h3>See what other's are saving for!</h3>
-<% @portfolios.each do |portfolio| %>
-<ul>
-  <li> <%= @all_users.find(portfolio.user_id).first_name%> wants to: <%= portfolio.goal.downcase %></li>
-</ul>
-<% end %>
-<p><a href="/portfolios/allgoals">View more</a></p>
+<div class="container">
+  <h3 class="center">Welcome, <%= @user.first_name %> </h3>
+  <div class="row">
+    <div class="col s4">
+      <h5>See what other's are saving for!</h5>
+      <% @portfolios.each do |portfolio| %>
+      <ul>
+        <li> <%= @all_users.find(portfolio.user_id).first_name%> wants to: <%= portfolio.goal.downcase %></li>
+      </ul>
+      <% end %>
+      <p><a href="/portfolios/allgoals">View more</a></p>
+    </div>
 
-<h3>Your Portfolios</h3>
-<% @user.portfolios.each do |portfolio|%>
-<a href="/portfolios/<%= portfolio.id %>"> <%= portfolio.portfolio_name %> </a>
-<% end %>
+    <div class="col s4 right">
+      <h5 class="center">Your Portfolios</h5>
+      <hr>
 
+      <ol>
+        <% @user.portfolios.each do |portfolio|%>
+        <li>
+          <a href="/portfolios/<%= portfolio.id %>" > <%= portfolio.portfolio_name %> </a>
+        </li>
+        <% end %>
+      </ol>
 
-<p><a href="/portfolios/new">Create a new portfolio</a></p>
+        <p><a href="/portfolios/new" class="waves-effect waves-light btn green">Create a new portfolio</a></p>
+    </div>
+  </div>
+</div>

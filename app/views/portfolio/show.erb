@@ -1,29 +1,38 @@
-<h1><%= @portfolio.portfolio_name %></h1>
+<div class="container">
+  <a href="/portfolios" class="arrow"><i class="small material-icons">arrow_back</i></a>
 
-<ul>
-  <li>Your goal is $<%= @portfolio.to_comma(@portfolio.ideal_completion_amount) %>.</li>
+  <h3 class="center-align"><%= @portfolio.portfolio_name %></h3>
 
-  <li>Your current savings is $<%= @portfolio.to_comma(@portfolio.current_savings) %>.</li>
+  <ul>
+    <li>Your goal is $<%= @portfolio.to_comma(@portfolio.ideal_completion_amount) %>.</li>
 
-  <li>You want to reach your goal in <%= @portfolio.years_until_goal %> years.</li>
+    <li>Your current savings is $<%= @portfolio.to_comma(@portfolio.current_savings) %>.</li>
 
-  <li>Your net monthly income is $<%= @portfolio.to_comma(@portfolio.net_monthly_income) %>.</li>
+    <li>You want to reach your goal in <%= @portfolio.years_until_goal %> years.</li>
 
-  <li>You save $<%= @portfolio.to_comma(@portfolio.monthly_addition_to_portfolio) %> per month for your goal at a <%= @portfolio.estimated_growth_rate.round%>&#37; yearly interest rate.</li>
+    <li>Your net monthly income is $<%= @portfolio.to_comma(@portfolio.net_monthly_income) %>.</li>
 
-  <li>Your contribute <%= @portfolio.allocation_towards_portfolio %>&#37; of your net monthly income towards your portfolio per month.</li>
+    <li>You save $<%= @portfolio.to_comma(@portfolio.monthly_addition_to_portfolio) %> per month for your goal at a <%= @portfolio.estimated_growth_rate.round%>&#37; yearly interest rate.</li>
 
-  <li>At the current contribution rate, you'll reach your goal in <%=    @portfolio.years_until_goal_achieved %> years.</li>
+    <li>You contribute <%= @portfolio.allocation_towards_portfolio %>&#37; of your net monthly income towards your portfolio per month.</li>
 
-  <li>At the current contribution rate, you'll have $<%= @portfolio.to_comma(@portfolio.amount_by_goal_age) %> amount by the end of your goal.</li>
-</ul>
+    <div>
+      <li> To reach your goal in <%= @portfolio.years_until_goal %> years, you should aim to contribute &#36;<%= @portfolio.estimated_contribution_rate %> per month.</li>
+      <li>At the current contribution rate, you'll reach your goal in <%=    @portfolio.years_until_goal_achieved %> years.</li>
 
-<p>We at Jingle know that life isn't perfect and financial planning is hard. You may want to increase or decrease contributions towards your portfolio depending on your life at the current time. Predicting the amount of money you'll be able to contribute in the future isn't easy, but it will make for a more accurate estimate. <a href="/portfolios/<%= @portfolio.id %>/predictions">Predict your contributions here</a></p>
+      <li>At the current contribution rate, you'll have $<%= @portfolio.to_comma(@portfolio.amount_by_goal_age) %> amount by the end of your goal.</li>
+    </div>
+
+  </ul>
+
+  <p>We at Jingle know that life isn't perfect and financial planning is hard. You may want to increase or decrease contributions towards your portfolio depending on your life at the current time. Predicting the amount of money you'll be able to contribute in the future isn't easy, but it will make for a more accurate estimate. <a href="/portfolios/<%= @portfolio.id %>/predictions">Predict your contributions here</a></p>
 
 
-<a href="/portfolios">Back</a>
-<a href="/portfolios/<%= @portfolio.id %>/edit">Edit Portfolio</a>
-<form action="/portfolios/<%= @portfolio.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Portfolio" id="delete_portfolio">
-</form>
+  <div class="clearfix">
+    <a href="/portfolios/<%= @portfolio.id %>/edit" class="waves-effect waves-light btn green float-left">Edit Portfolio</a>
+    <form action="/portfolios/<%= @portfolio.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Portfolio" id="delete-portfolio" class="waves-effect waves-light btn red">
+    </form>
+  </div>
+</div>

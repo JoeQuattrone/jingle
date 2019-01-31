@@ -39,31 +39,59 @@ class Portfolio < ActiveRecord::Base
   #correct
   def amount_by_goal_age
     decimal_growth_rate = (self.estimated_growth_rate/100)
+    one_plus_growth_rate = (1 + decimal_growth_rate)
     yearly_contribution = self.monthly_addition_to_portfolio * 12
-
 
     initial_money = self.current_savings * (1 + decimal_growth_rate)**self.years_until_goal
 
-    contributions_future_value = (yearly_contribution * (1 + decimal_growth_rate)**self.years_until_goal - 1)/(decimal_growth_rate)
+    contributions_fv_multiplier = ((one_plus_growth_rate**self.years_until_goal) - 1)/decimal_growth_rate
 
-    answer =  contributions_future_value + initial_money
+    contributions_fv = yearly_contribution * contributions_fv_multiplier
+
+    answer =  contributions_fv + initial_money
     answer.round(2)
   end
 
   def projected_amount_by_goal_end(years_until_amount, amount)
     decimal_growth_rate = (self.estimated_growth_rate/100)
+    one_plus_growth_rate = (1 + decimal_growth_rate)
     old_yearly_contribution = self.monthly_addition_to_portfolio * 12
     new_years_until_goal = self.years_until_goal - years_until_amount
     new_yearly_contribution = amount * 12
     initial_money = self.current_savings * (1 + decimal_growth_rate)**self.years_until_goal
 
-    old_contributions_future_value = (old_yearly_contribution *(1 + decimal_growth_rate)**years_until_amount - 1)/(decimal_growth_rate)
+    #old contribution future value
+    old_contributions_fv_multiplier = ((one_plus_growth_rate**years_until_amount) - 1)/decimal_growth_rate
 
-     new_contributions_future_value = (new_yearly_contribution * (1 + decimal_growth_rate)**(new_years_until_goal) - 1)/(decimal_growth_rate)
+    old_contributions = old_yearly_contribution * old_contributions_fv_multiplier
+    #end of old contribution future value
 
-     answer = initial_money + old_contributions_future_value + new_contributions_future_value
+    #new contribution future value
+    new_contributions_fv_multiplier = ((one_plus_growth_rate**new_years_until_goal) - 1)/decimal_growth_rate
+
+    new_contributions = new_yearly_contribution * new_contributions_fv_multiplier
+    #end of new contribution future value
+
+     answer = initial_money + old_contributions + new_contributions
 
      answer.round(2)
+  end
+
+  def estimated_contribution_rate
+    decimal_growth_rate = (self.estimated_growth_rate/100)
+    one_plus_growth_rate = (1 + decimal_growth_rate)
+    yearly_contribution = self.monthly_addition_to_portfolio * 12
+    initial_money = self.current_savings * (1 + decimal_growth_rate)**self.years_until_goal
+
+
+    principal = self.ideal_completion_amount - initial_money
+
+    bottom_half = ((one_plus_growth_rate)**self.years_until_goal - 1)/decimal_growth_rate
+
+    answer = (principal/bottom_half)/12
+
+    answer.round(2)
+
   end
 
 
