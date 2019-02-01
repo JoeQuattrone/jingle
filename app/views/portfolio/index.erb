@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="center">Welcome, <%= @user.first_name %> </h3>
   <div class="row">
-    <div class="col s4">
+    <div class="col s4 right">
       <h5>See what other's are saving for!</h5>
       <% @portfolios.each do |portfolio| %>
       <ul>
@@ -11,7 +11,7 @@
       <p><a href="/portfolios/allgoals">View more</a></p>
     </div>
 
-    <div class="col s4 right">
+    <div class="col s4 left">
       <h5 class="center">Your Portfolios</h5>
       <hr>
 
@@ -25,7 +25,7 @@
     </div>
   </div > <!--  end of row -->
 
-  <div class="right">
+  <div class="left">
     <a href="/portfolios/new" class="waves-effect waves-light btn green">Create a new portfolio</a>
   </div>
 </div>
