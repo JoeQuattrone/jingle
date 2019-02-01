@@ -25,7 +25,6 @@ class Portfolio < ActiveRecord::Base
     answer.round(2)
   end
 
-  #incorrect
   def years_until_goal_achieved
     decimal_growth_rate = (self.estimated_growth_rate/100)
     yearly_contribution = self.monthly_addition_to_portfolio * 12
@@ -72,6 +71,7 @@ class Portfolio < ActiveRecord::Base
     new_contributions = new_yearly_contribution * new_contributions_fv_multiplier
     #end of new contribution future value
 
+      #fv of initial money + fv of old contributions +fv of new contributions
      answer = initial_money + old_contributions + new_contributions
 
      answer.round(2)

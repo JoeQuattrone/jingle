@@ -62,3 +62,22 @@ div.results {
   margin: 2px;
   text-align: center;
 }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.page-footer {
+  color: black;
+  background-color: black;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+html, li {
+  font-size: 20px;
+}
