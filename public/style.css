@@ -81,3 +81,11 @@ h3 {
 html, li {
   font-size: 20px;
 }
+
+p.margin-top {
+  margin-top: 25px;
+}
+
+span#bold {
+  font-weight: 400;
+}

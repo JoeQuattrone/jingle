@@ -1,5 +1,6 @@
 require './config/environment'
 require_relative '../helpers/helpers.rb'
+require 'rack-flash'
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -10,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :"application/index"
+    erb :"application/index",:layout => :"application/application_layout"
   end
 
   get "/signup" do
@@ -51,7 +52,4 @@ class ApplicationController < Sinatra::Base
     session.clear
     redirect to "/"
   end
-
-
-
 end

@@ -1,7 +1,5 @@
-<div class="container">
   <h1>Results</h1>
 
   <p>If in <%= @portfolio.projected_time %> year(s), you change your contribution to &#36;<%= @portfolio.to_comma(@portfolio.projected_contribution) %> per month, you'll have  &#36;<%=  @portfolio.to_comma(@portfolio.projected_amount) %> saved up <%= @portfolio.years_until_goal%> years from now. </p>
 
   <div><a href="/portfolios/<%= @portfolio.id %>">Back</a></div>
-</div>

@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  use Rack::Flash
 
   get '/portfolios' do
     if Helpers.is_logged_in?(session)
@@ -30,6 +31,7 @@ class PortfoliosController < ApplicationController
 
   post '/portfolios' do
     if params.any? { |key, param| param.nil? || param == '' }
+      flash[:notice] = "You must fill out all fields"
       redirect to '/portfolios/new'
     else
       @user = Helpers.current_user(session)
@@ -50,10 +52,11 @@ class PortfoliosController < ApplicationController
   end
 
   get '/portfolios/:id/edit' do
-    if Helpers.is_logged_in?(session)
-      @portfolio = Portfolio.find(params[:id])
+    @portfolio = Portfolio.find(params[:id])
+    if Helpers.is_logged_in?(session) && Helpers.current_user(session).id == @portfolio.user_id
       erb :"portfolio/edit"
     else
+      flash[:notice] = "Permission denied"
       redirect to "/login"
     end
   end
