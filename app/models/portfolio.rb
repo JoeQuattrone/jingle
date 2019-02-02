@@ -40,7 +40,6 @@ class Portfolio < ActiveRecord::Base
     decimal_growth_rate = (self.estimated_growth_rate/100)
     one_plus_growth_rate = (1 + decimal_growth_rate)
     yearly_contribution = self.monthly_addition_to_portfolio * 12
-
     initial_money = self.current_savings * (1 + decimal_growth_rate)**self.years_until_goal
 
     contributions_fv_multiplier = ((one_plus_growth_rate**self.years_until_goal) - 1)/decimal_growth_rate
@@ -72,6 +71,7 @@ class Portfolio < ActiveRecord::Base
     #end of new contribution future value
 
       #fv of initial money + fv of old contributions +fv of new contributions
+      binding.pry
      answer = initial_money + old_contributions + new_contributions
 
      answer.round(2)
