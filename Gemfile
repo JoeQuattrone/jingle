@@ -9,6 +9,10 @@ gem 'thin'
 gem 'pg', '1.1.4'
 gem 'bcrypt'
 gem 'rack-flash3'
+gem 'rails_12factor'
+gem 'foreman'
+gem 'dotenv'
+
 
 group :development do
   gem 'sqlite3'
