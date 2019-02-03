@@ -104,5 +104,8 @@ DEPENDENCIES
   thin
   tux
 
+RUBY VERSION
+   ruby 2.5.3p105
+
 BUNDLED WITH
    1.17.1
