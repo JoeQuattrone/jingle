@@ -86,14 +86,13 @@ p.margin-top {
   margin-top: 25px;
 }
 
-span#bold {
-  font-weight: 400;
-}
-
-/* doesnt work */
 div#something {
   color: black;
   display: inline-block;
-  marign-left: 60px;
-  margin-top: 10px;
+  margin-left: 3%;
+  margin-top: 6px;
+}
+
+span#bold {
+  font-weight: 400;
 }
