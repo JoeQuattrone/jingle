@@ -1,6 +1,12 @@
   <h3 class="center">Welcome, <%= @user.first_name %> </h3>
+
+  <% if @user.portfolios.empty? %>
+  <p class="center">Thank you for signing up! Get started by creating a new portfolio <a href="/portfolios/new">here.</a>
+  </p>
+  <% end %>
+
   <div class="row">
-    <div class="col s4 right">
+    <div class="col s4 right" id="social-media">
       <h5>See what other's are saving for!</h5>
       <% @portfolios.each do |portfolio| %>
       <ul>
