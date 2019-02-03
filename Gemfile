@@ -6,15 +6,13 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
-gem 'shotgun'
-gem 'pry'
+gem 'pg', '0.20'
 gem 'bcrypt'
-gem "tux"
 gem 'rack-flash3'
-group :development do
-   gem 'sqlite3'    #gem to use in development environment
-end
 
-group :production do
-  gem 'pg'         #gem to use in production environment
+group :development do
+  gem 'sqlite3'
+  gem 'shotgun'
+  gem 'tux'
+  gem 'pry'
 end
