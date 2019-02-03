@@ -6,7 +6,7 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
-gem 'pg', '0.20'
+gem 'pg', '1.1.4'
 gem 'bcrypt'
 gem 'rack-flash3'
 
