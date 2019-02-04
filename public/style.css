@@ -47,9 +47,17 @@ a.arrow i {
   color: black;
 }
 
-#delete-portfolio {
-  float: left;
-  margin-left: 10px;
+#delete-button {
+  color: white;
+}
+
+
+#delete-form > i {
+  margin-left: 2%;
+}
+
+#submit {
+  color: white;
 }
 
 a.float-left {
@@ -84,6 +92,8 @@ html, li {
 
 p.margin-top {
   margin-top: 25px;
+  font-size: 1.2em;
+
 }
 
 div#something {

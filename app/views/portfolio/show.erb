@@ -56,12 +56,13 @@
               <li>&bull; You'll reach your goal in
                 <%= @portfolio.years_until_goal_achieved %>
                 years.</li>
-              <p>
+              <li>
                 &bull; To reach $<%= @portfolio.to_comma(@portfolio.ideal_completion_amount) %>
                 in
                 <%= @portfolio.years_until_goal %>
                 years, aim to contribute &#36;<%= @portfolio.estimated_contribution_rate %>
                 per month.
+                </li>
               </ul>
             </div>
           </div>
@@ -76,8 +77,8 @@
 
       <div class="clearfix">
         <a href="/portfolios/<%= @portfolio.id %>/edit" class="waves-effect waves-light btn green float-left">Edit Portfolio</a>
-        <form action="/portfolios/<%= @portfolio.id %>" method="post">
+        <form id="delete-form" action="/portfolios/<%= @portfolio.id %>" method="post">
           <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete Portfolio" id="delete-portfolio" class="waves-effect waves-light btn red">
+          <input type="submit" value="Delete Portfolio" class="btn red white-text waves-effect waves-light" id="delete-button">
         </form>
       </div>
