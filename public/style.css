@@ -96,7 +96,7 @@ p.margin-top {
 
 }
 
-div#something {
+div#login-from-signup {
   color: black;
   display: inline-block;
   margin-left: 3%;
@@ -105,4 +105,8 @@ div#something {
 
 span#bold {
   font-weight: 400;
+}
+
+#signup {
+  color: white;
 }
