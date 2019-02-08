@@ -101,6 +101,17 @@ class PortfoliosController < ApplicationController
       erb :"portfolio/prediction_results"
     end
 
+    post "/portfolios/search" do
+      @all_users = User.all
+      @search_results = @all_users.find_all do |user|
+        user.first_name.downcase.include?(params[:name].downcase)
+      end
+        @portfolios =  @search_results.map do |user|
+          user.portfolios
+      end.flatten
+      erb :"portfolio/allgoals"
+    end
+
 
 
 end

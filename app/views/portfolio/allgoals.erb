@@ -1,8 +1,14 @@
   <h3>See what others have to say</h3>
+<form action="/portfolios/search" method="post">
+  <input type="text" name="name">
+  <input type="submit">
+</form>
   <% @portfolios.each do |portfolio| %>
   <ul>
     <li><%= @all_users.find(portfolio.user_id).first_name %> wants to: <%= portfolio.goal.downcase %></li>
   </ul>
   <% end %>
+
+
 
   <div><a href="/portfolios">Back</a></div>
