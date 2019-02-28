@@ -4,7 +4,7 @@ jingle is a financial manager app that aims to create a goal with users and help
 
 ## Getting Started
 
-To get started wait for me to deploy the website
+Visit https://my-jingle.herokuapp.com/
 
 ## Built With
 
