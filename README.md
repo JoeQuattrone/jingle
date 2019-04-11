@@ -1,6 +1,6 @@
 # jingle
 
-jingle is a financial manager app that aims to create a goal with users and helps them to achieve it. jingle asks users questions about their finances and asks them to create a financial goal. jingle will take in that information, show tangible metrics pertaining to that goal and answer questions, such as, "How long will it take?", "How much money will I have after X amount of years", "Am I on the right track?" and more.
+jingle is a financial management app that aims to create a goal with users and helps them to achieve it. jingle asks users questions about their finances and asks them to create a financial goal. jingle will take in that information, show tangible metrics pertaining to that goal and answer questions, such as, "How long will it take?", "How much money will I have after X amount of years", "Am I on the right track?" and more.
 
 ## Getting Started
 
